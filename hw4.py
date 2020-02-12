@@ -1,3 +1,5 @@
+#Couldn't get the solver to work, it always said that the values were unsatisfiable
+
 from z3 import *
 import sys
 # Read a command line argument
@@ -14,6 +16,11 @@ else:
     N = 15 #defaut value
 
 l = []
+s = []
+i = 1
+while(i*i < 2*N):
+    s.append(i)
+    i = i+1
 
 solv = Solver()
 for i in range(0,N):
@@ -22,9 +29,21 @@ for i in range(0,N):
     solv.add(i > 0)
     solv.add(i < N)
 
-print(len(l))
+for i in range(0,len(s)):
+    solv.add(l[i]+l[i+1]==s[i])
+
 Distinct(l)
 
-s = []
-for i in range(0, 2*N):
-    s.append(i*i)
+result = solv.check();
+if result == unsat:
+    print("unsatisfiable constraints")
+elif result == sat:
+    print("satisfiable as:")
+    m = solv.model()
+    print(m[i])
+    if s.check(block_model(s)) == unsat:
+        print("unique solution")
+    else:
+        print("nonunique solution")
+else:
+    print('unable to solve')
