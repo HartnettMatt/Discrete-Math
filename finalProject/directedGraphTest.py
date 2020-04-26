@@ -1,23 +1,22 @@
 from directedGraph import *
 
-graph = directedGraph()
+g1 = directedGraph(5)
+g1.add_edge(1, 0)
+g1.add_edge(0, 2)
+g1.add_edge(2, 1)
+g1.add_edge(0, 3)
+g1.add_edge(3, 4)
+print("SSC in first graph ")
+g1.SCC()
 
-graph.add_vertex('a')
-graph.add_vertex('b')
-graph.add_vertex('c')
-graph.add_vertex('d')
-graph.add_vertex('e')
-graph.add_vertex('f')
-graph.add_vertex('g')
-
-graph.add_edge('a','b')
-graph.add_edge('b','d')
-graph.add_edge('d','c')
-graph.add_edge('c','a')
-
-
-graph.add_edge('f','g')
-graph.add_edge('g','e')
-graph.add_edge('e','f')
-
-graph.printSCC()
+g3 = directedGraph(7)
+g3.add_edge(0, 1)
+g3.add_edge(1, 2)
+g3.add_edge(2, 0)
+g3.add_edge(1, 3)
+g3.add_edge(1, 4)
+g3.add_edge(1, 6)
+g3.add_edge(3, 5)
+g3.add_edge(4, 5)
+print( "SSC in third graph ")
+g3.SCC()
