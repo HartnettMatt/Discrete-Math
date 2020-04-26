@@ -1,7 +1,7 @@
 # Graph Test Code:
-from graph import *
+from weightedGraph import *
 
-graph = Graph()
+graph = weightedGraph()
 
 # Build a graph of various connections with various weights for testing purposes
 graph.add_vertex('a')
@@ -36,3 +36,5 @@ print("Dijkstra Output = " + str(graph.dijkstra('a','d')))
 
 print("\nTesting 7 possible routes: \nExpected output = 8")
 print("Dijkstra Output = " + str(graph.dijkstra('a','e')))
+print(graph.breadthFirst('g', 'b'))
+# graph.SCC()

@@ -1,3 +1,4 @@
+from sys import maxsize
 class Vertex:
     def __init__(self, name):
         self.id = name
@@ -78,7 +79,6 @@ class Graph(object):
         solvedList.append(self.vert_dict[frm])
 
         # Temp keeps track of which vertex is being tested
-        temp = Vertex('temp')
         temp = self.vert_dict[frm]
 
         # solvedV keeps track of which vertex is closest for that iteration
@@ -86,7 +86,7 @@ class Graph(object):
 
         # Loop until the destination is reached
         while self.vert_dict[to].visited != True:
-            minDist = 2147483647
+            minDist = maxsize
             for x in solvedList:
                 temp = x
                 for i in temp.adjacent:
@@ -103,3 +103,26 @@ class Graph(object):
         distance = self.vert_dict[to].distance
         self.reset_graph()
         return distance
+
+# Set distance of all vertices to maximum
+    def set_graph(self):
+        for k in self.vert_dict:
+            self.vert_dict[k].distance = maxsize
+
+# Find the distance from source node to destination disregarding weight
+    def breadthFirst(self, frm, to):
+        self.set_graph()
+        self.vert_dict[frm].distance = 0
+        self.vert_dict[frm].visited = True
+        q = []
+        q.append(self.vert_dict[frm])
+        while q:
+            temp = q.pop()
+            for i in temp.adjacent:
+                dist = temp.distance + temp.get_weight(i)
+                if dist < i.distance:
+                    i.distance = dist
+                if i.visited == False:
+                    q.append(i)
+                    i.visited = True
+        return self.vert_dict[to].distance
