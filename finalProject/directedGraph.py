@@ -67,30 +67,12 @@ class directedGraph(object):
         for k in self.vert_dict:
             self.vert_dict[k].distance = maxsize
 
-# Find the distance from source node to destination disregarding weight
-    # def breadthFirst(self, frm, to):
-    #     self.set_graph()
-    #     self.vert_dict[frm].distance = 0
-    #     self.vert_dict[frm].visited = True
-    #     q = []
-    #     q.append(self.vert_dict[frm])
-    #     while q:
-    #         temp = q.pop()
-    #         for i in temp.adjacent:
-    #             dist = temp.distance + temp.get_weight(i)
-    #             if dist < i.distance:
-    #                 i.distance = dist
-    #             if i.visited == False:
-    #                 q.append(i)
-    #                 i.visited = True
-    #     return self.vert_dict[to].distance
-
     def fillUp(self, v, stack):
         v.visited = True
         for i in v.adjacent:
             if i.visited == False:
                 self.fillUp(i, stack)
-        stack = stack.append(v)
+        stack.append(v)
 
     def reverse(self):
         r = directedGraph()
@@ -106,7 +88,7 @@ class directedGraph(object):
             if i.visited == False:
                 self.DFSUtil(i)
 
-    def SCC(self):
+    def printSCC(self):
         stack = []
         self.reset_graph()
         for i in self.vert_dict:
@@ -114,9 +96,8 @@ class directedGraph(object):
                 self.fillUp(self.vert_dict[i], stack)
 
         reversed = self.reverse()
-        for u in reversed.vert_dict:
-            print(str(reversed.vert_dict[u]))
         self.reset_graph()
+        print("The strongly connected components in this graph are:")
         while stack:
             i = stack.pop()
             if i.visited == False:

@@ -109,7 +109,7 @@ class Graph(object):
         for k in self.vert_dict:
             self.vert_dict[k].distance = maxsize
 
-# Find the distance from source node to destination disregarding weight
+# Breadth First Traversal that keeps track of weighted distance
     def breadthFirst(self, frm, to):
         self.set_graph()
         self.vert_dict[frm].distance = 0

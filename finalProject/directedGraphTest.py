@@ -15,9 +15,9 @@ graph.add_edge('b','d')
 graph.add_edge('d','c')
 graph.add_edge('c','a')
 
-graph.add_edge('d','f')
+
 graph.add_edge('f','g')
 graph.add_edge('g','e')
 graph.add_edge('e','f')
 
-graph.SCC()
+graph.printSCC()
