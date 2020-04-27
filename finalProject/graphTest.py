@@ -11,6 +11,7 @@ graph.add_edge(3, 2, 5)
 graph.add_edge(3, 1, 1)
 graph.add_edge(4, 3, -3)
 
+print("\nTesting Bellman-Ford:")
 graph.bellmanFord(4)
-# graph.printGraph()
+print("\nTesting Floyd-Warshall:")
 graph.floydWarshall()

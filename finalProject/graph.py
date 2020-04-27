@@ -9,7 +9,6 @@ class Graph:
         self.graph.append([frm,to,weight])
 
     def bellmanFord(self,src):
-        print("Running Bellman Ford algorithm:")
         dist = [maxsize]*self.V
         dist[src] = 0
 
@@ -25,7 +24,7 @@ class Graph:
                 print("Negative weight cycle")
                 return
 
-        print("Distance from source:")
+        print("Distance from source vertex " + str(src) + ":")
         for i in range(self.V):
             if dist[i] != maxsize:
                 print(str(i) + "\t" + str(dist[i]))

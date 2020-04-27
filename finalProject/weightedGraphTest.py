@@ -24,8 +24,10 @@ graph.add_edge('f','g',1)
 graph.add_edge('g','e',4)
 
 # Testing of a few graph functions:
+print("\nTesting functions from graph:")
 print(graph.get_vertices())
 print(graph.get_vertex('a'))
+graph.add_edge('f','a',-1)
 
 # Testing DijkstraAlgorithm:
 print("\nTesting single connection: \nExpected output = 2")
@@ -36,5 +38,3 @@ print("Dijkstra Output = " + str(graph.dijkstra('a','d')))
 
 print("\nTesting 7 possible routes: \nExpected output = 8")
 print("Dijkstra Output = " + str(graph.dijkstra('a','e')))
-print(graph.breadthFirst('g', 'b'))
-# graph.SCC()

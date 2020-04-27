@@ -22,7 +22,7 @@ class Vertex:
     def get_weight(self, adjacent):
         return self.adjacent[adjacent]
 
-class Graph(object):
+class weightedGraph(object):
     def __init__(self):
         # vert_dict is the dictionary of vertices
         self.vert_dict = {}
@@ -44,7 +44,10 @@ class Graph(object):
             return None
 
 # Add weighted edge to the graph, will create vertexes if they don't already exist
-    def add_edge(self, frm, to, weight = 0):
+    def add_edge(self, frm, to, weight = 1):
+        if weight < 0:
+            print("Negative edge weights are not allowed")
+            return
         if frm not in self.vert_dict:
             self.add_vertex(frm)
         if to not in self.vert_dict:
