@@ -33,7 +33,7 @@ class directedGraph(object):
         for i in range(self.v):
             if disc[i] == -1:
                 self.SCChelper(i, low, disc, stackMember, st)
-            
+
 # A helper function for the strongly connected components algorithm
     def SCChelper(self, u, low, disc, stackMember, st):
         disc[u] = self.time
