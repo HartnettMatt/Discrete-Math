@@ -8,6 +8,7 @@ class Graph:
     def add_edge(self, frm, to, weight):
         self.graph.append([frm,to,weight])
 
+ # Takes graph and a source vertex as an input, prints out distances for all vertices in graph
     def bellmanFord(self,src):
         dist = [maxsize]*self.V
         dist[src] = 0
@@ -17,7 +18,6 @@ class Graph:
                 distance = dist[frm] + weight
                 if dist[frm] != maxsize and distance < dist[to]:
                     dist[to] = distance
-
         for frm, to, weight in self.graph:
             distance = dist[frm] + weight
             if dist[frm] != maxsize and distance < dist[to]:
